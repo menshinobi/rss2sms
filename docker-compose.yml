@@ -1,0 +1,44 @@
+version: '3'
+services:
+  app:
+    image: toancong/phpup:2
+    depends_on:
+      - db
+    ports:
+      - 11700:80
+    volumes:
+      - .:/var/www/app
+    working_dir: /var/www/app
+    environment:
+      PHP_MEM_LIMIT: -1
+      PHP_UPLOAD_MAX_FILESIZE: 100M
+      PHP_MAX_EXECUTION_TIME: 18600
+    command:
+      - /bin/bash
+      - -c
+      - |
+        # uncomment to active schedule cron (ONLY ACTIVE ON LOCAL DEV, don't commit this ON)
+        # crond -L /var/www/app/storage/logs/cron.log
+        /start.sh
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: user123
+    ports:
+      - 11706:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 11709:80
+    depends_on:
+      - db
+    environment:
+      PMA_HOSTS: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 100M

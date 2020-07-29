@@ -102,6 +102,9 @@
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/vedmant/laravel-feed-reader" />
+      <path value="$PROJECT_DIR$/vendor/simplepie/simplepie" />
+      <path value="$PROJECT_DIR$/vendor/twilio/sdk" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
